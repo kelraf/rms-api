@@ -2,7 +2,7 @@
 
     require_once "./base-user.php";
 
-    class UserInfor extends Base {
+    class LandLord extends Base {
 
         public function __construct() {
             parent::__construct();
@@ -54,7 +54,7 @@
                 If true returns a user with a given id
                 if false returns all the Users form the users table.
                 if No id is provided and the value of getOne is true
-                Then the method returns a an assos array with a boolean of false and a message 
+                Then the method returns an assos array with a boolean of false and a message 
             */
             
             if($getOne) {
@@ -108,7 +108,20 @@
             */
             $result = $this->vPassword(true);
             if($result["bool"]) {
-                return ["bool" => true, "Message" => "Success"];
+
+                try {
+                    $sql = $this->db->prepare("UPDATE users SET passw=?, confirmPassw=? WHERE id=?");
+                    if($sql->execute([$this->passw, $this->confirmPassw, $this->id])) {
+                        return ["bool" => true, "Message" => "Successlly Updated Your Password"];
+                    } else {
+                        throw new Exception("Error Updating Passwords");
+                        
+                    }
+                    
+                } catch(PDOExeption $ex) {
+                    echo "Error: {$ex->getMessage()}";
+                }
+              
             } else {
                 return $result;
             }
@@ -118,11 +131,11 @@
 
     } 
 
-    $user = new UserInfor;
+    $user = new LandLord;
 
-    $user->id = 10;
+    $user->id = 5;
 
-    $user->currentPassw = "kelvin";
+    $user->currentPassw = "kelraf";
 
     $user->firstName = "Kelvin";
     $user->lastName = "Wambugu";
@@ -130,12 +143,12 @@
     $user->nationalId = 1122678;
     $user->phoneNo = "0727456354";
     $user->email = "kelvin@gmail.com";
-    $user->passw = "kelvin";
-    $user->confirmPassw = "kelvin";
+    $user->passw = "kelraf";
+    $user->confirmPassw = "kelraf";
 
     // print_r($user->register());
-    // print_r($user->updatePasswords());
-    // print_r($user->getUsers());
+    print_r($user->updatePasswords());
+    // print_r($user->getUsers(true));
     // print_r($user->updateInfor());
 
 ?>
