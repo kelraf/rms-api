@@ -47,57 +47,6 @@
 
         } 
 
-        public function getUsers($getOne=false) {
-
-            /* 
-                This method creates gets User/s depending on the value of the getOne variable
-                If true returns a user with a given id
-                if false returns all the Users form the users table.
-                if No id is provided and the value of getOne is true
-                Then the method returns an assos array with a boolean of false and a message 
-            */
-            
-            if($getOne) {
-                $done = $this->idExists(true);
-
-                if(!$done["bool"]) {
-                    return $done;
-                } else {
-                    return $done;
-                }
-
-            } else {
-
-               $done = $this->getAll();
-               if($done["bool"]) {
-                    return $done;
-               } else {
-                   return $done;
-               }
-
-            }
-
-        }
-        
-        public function updateInfor() {
-            try {
-
-                $stmt = "UPDATE users SET firstName=?, lastName=?, gender=?, nationalId=?, phoneNo=?, email=? WHERE id=?";
-                $sql = $this->db->prepare($stmt);
-
-                $data = [$this->firstName, $this->lastName, $this->gender, $this->nationalId, $this->phoneNo, $this->email, $this->id];
-
-                if($sql->execute($data)) {
-                    return ["bool" => true, "message" => "Updated Successfully"];
-                } else {
-                    throw new Exception("Error Occurred When Updating A User");
-                }
-
-            } catch(PDOExeption $ex) {
-                echo "Error: {$ex->getMessage()}";
-            }
-        }
-
         public function updatePasswords() {
             /* 
                 *This method is userd to update user passwords
@@ -127,15 +76,13 @@
             }
         }
 
-        public function deleteUser() {}
-
     } 
 
     $user = new LandLord;
 
-    $user->id = 5;
+    $user->id = 80;
 
-    $user->currentPassw = "kelraf";
+    $user->currentPassw = "kelvin";
 
     $user->firstName = "Kelvin";
     $user->lastName = "Wambugu";
@@ -147,8 +94,9 @@
     $user->confirmPassw = "kelraf";
 
     // print_r($user->register());
-    print_r($user->updatePasswords());
-    // print_r($user->getUsers(true));
+    // print_r($user->updatePasswords());
+    print_r($user->getUser());
     // print_r($user->updateInfor());
+    // print_r($user->deleteUser());
 
 ?>

@@ -5,6 +5,7 @@
     class Base {
 
         public $id;
+
         public $currentPassw;
 
         public $firstName;
@@ -33,22 +34,6 @@
 
         public function __destruct() {
             $this->db = $this->dbinst->closeConn();
-        }
-
-        protected function getAll() {
-            try {
-                $stmt = "SELECT * FROM users";
-                $sql = $this->db->query($stmt);
-                $data = $sql->fetchAll();
-
-                if($data) {
-                    return ["bool" => true, "data" => $data];
-                } else {
-                    return ["bool" => false, "message" => "Users Table Is empty"];
-                }
-            } catch(PDOExeption $ex) {
-                echo "Error: {$ex->getMessage()}";
-            }
         }
 
         protected function idExists($data=false) {
@@ -142,9 +127,139 @@
             }
         }
 
-        protected function vNames() {}
+        protected function vNames() {
+            // Sanitize The Names
+            $this->firstName = filter_var($this->firstName, FILTER_SANITIZE_STRING);
+            $this->lastName = filter_var($this->lastName, FILTER_SANITIZE_STRING);
+
+            if(empty($this->firstName)) {
+                return ["bool" => false, "message" => "First Name Field is required"];
+            } elseif(empty($this->lastName)) {
+                return ["bool" => false, "message" => "Last Name Field is required"];
+            } elseif(strlen($this->firstName) < 2 or strlen($this->lastName) < 2) {
+                return ["bool" => false, "message" => "Names Should Not Be Too Short"];
+            } else {
+                return ["bool" => true];
+            }
+        }
 
         protected function vUserInfor() {}
+
+        /**
+         * ----------------------------------------------------------------------------------------------------
+         * The Methods From These Point Downwords are 
+          */
+
+        public function updateInfor() {
+
+            /**
+             * --------------------------------------------------------------------------------------------------------------------------------------------------
+             * This method is used to edit user additional information 
+             * Parameters are user id, email, first and last Names, gender, phone Number, National Id
+             * This Method Depends on:
+             *  -vNames() To validate names and returns assoc array with a bool as true or false depending on either validation was successfull and message
+             *  -vEmail(true) To validate Email
+             *  -idExists() To Check if The provided id exists in the database
+             * 
+             * ---------------------------------------------------------------------------------------------------------------------------------------------------
+             *   Note 
+             *  -------------------------------------------------------------------------------------------------------------------------
+             *   These Method Should Be Available and ready to use as it is in any child Class
+
+             *   -------------------------------------------------------------------------------------------------------------------------
+             * 
+             */
+
+            $names = $this->vNames();
+            $email = $this->vEmail();
+            $idexists = $this->idExists();
+
+            if(!$names["bool"]) {
+                return $names;
+            } elseif(!$email["bool"]) {
+                return $email;
+            } elseif(!$idexists["bool"]) {
+                return $idexists;
+            } else {
+
+                try {
+
+                    $stmt = "UPDATE users SET firstName=?, lastName=?, gender=?, nationalId=?, phoneNo=?, email=? WHERE id=?";
+                    $sql = $this->db->prepare($stmt);
+    
+                    $data = [$this->firstName, $this->lastName, $this->gender, $this->nationalId, $this->phoneNo, $this->email, $this->id];
+    
+                    if($sql->execute($data)) {
+                        return ["bool" => true, "message" => "Updated Successfully"];
+                    } else {
+                        throw new Exception("Error Occurred When Updating A User");
+                    }
+    
+                } catch(PDOExeption $ex) {
+                    echo "Error: {$ex->getMessage()}";
+                }
+
+            }
+        }
+
+        public function getUser() {
+
+            /* 
+                -------------------------------------------------------------------------------------------------------------------------
+
+                This method  gets User of The given Id
+                The Method Depends on The idExists() method Which returns an assoc with bool of true and success message if user exists
+                If The User Does not exist the it returns an assoc with a bool of false and a message 
+
+                -------------------------------------------------------------------------------------------------------------------------
+
+                Note 
+                -------------------------------------------------------------------------------------------------------------------------
+                These Method Should Be Available and ready to use as it is in any child Class
+
+                -------------------------------------------------------------------------------------------------------------------------
+            */
+
+            $done = $this->idExists(true);
+
+            if(!$done["bool"]) {
+                return $done;
+            } else {
+                return $done;
+            }
+            
+        }
+
+
+        public function deleteUser() {
+
+            /**
+             *  -----------------------------------------------------------------------------------------------------
+             * This Method Is used to delete a user of the Given Id for the database
+             * This method depends of idExistes() method which Checks if The id given exists in the database
+             *
+             *  -----------------------------------------------------------------------------------------------------
+             *  NOTE 
+             *  -----------------------------------------------------------------------------------------------------
+              *  These Method Should Be Available and ready to use as it is in any child Class
+              *
+              * -----------------------------------------------------------------------------------------------------
+             */
+
+            $idexists = $this->idExists();
+
+            if(!$idexists["bool"]) {
+                return $idexists;
+            } else {
+                $stmt = "DELETE FROM users WHERE id = ?";
+                $sql = $this->db->prepare($stmt);
+                if ($sql->execute([$this->id])) {
+                    return ["bool" => true, "message" => "User Successfully Deleted"];
+                } else {
+                    return ["bool" => false, "message" => "Unable To Delete The user"];
+                }
+            }
+        }
     } 
 
     // $base = new Base;
