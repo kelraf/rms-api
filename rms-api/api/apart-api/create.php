@@ -4,7 +4,7 @@
 
     $apartmentName = $_POST["apartmentName"];
     $apartmentLocation = $_POST["apartmentLocation"];
-    $landlordId = 1;
+    $landlordId = 1; 
 
     $done = mysqli_query($conn, 
                         "INSERT INTO apartments (apartmentName, apartmentLocation, landlordId)

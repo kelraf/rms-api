@@ -63,7 +63,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <a href="./houses.php" class="btn">Add House</a>
+                            <a href="./house_form.php" class="btn">Add House</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Edit</button>
+                            <a href="./houses.php" class="btn">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Delete</button>
+                            <a href="./houses.php" class="btn">Delete</a>
                         </div>
                     </div>
                 </div>

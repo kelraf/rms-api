@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>House</title>
+    <title>Apartment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../fontawesome-free-5.9.0-web/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/custom/house_profile.css">
 </head>
+
 <body class="bg-primary" onload="apartmentsProfile();">
+
+    <?php
+
+    $apart_id = $_GET["id"];
+    include "../../rms-api/database.php";
+    $query = mysqli_query($conn, "SELECT * FROM apartments WHERE id='$apart_id'");
+    $data = mysqli_fetch_array($query);
+    if ($data) {
+        echo "Data available";
+    } else {
+        echo "No Data Available";
+    }
+
+    ?>
 
     <!-- Back Button -->
     <a href="./apartments.php" class="back-arrow-btn">
@@ -34,19 +50,19 @@
                 <!-- House Information -->
                 <div class="row">
                     <div class="col-5 pt-2 pb-2">Apartment Name</div>
-                    <div class="col-7 pt-2 pb-2">The Name</div>
+                    <div class="col-7 pt-2 pb-2"><?php echo $data["apartmentName"] ?></div>
                 </div>
 
                 <div class="row">
                     <div class="col-5 pt-2 pb-2">Apartment Location</div>
-                    <div class="col-7 pt-2 pb-2">House</div>
+                    <div class="col-7 pt-2 pb-2"><?php echo $data["apartmentLocation"] ?></div>
                 </div>
 
                 <!-- Edit User Details row -->
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Add House</button>
+                            <a href="./house_form.php" class="btn">Add House</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +71,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Edit</button>
+                            <a href="./house_form.php" class="btn">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +80,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Delete</button>
+                            <a href="./house_form.php" class="btn">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +88,7 @@
             </div>
 
             <!-- House Icon and images -->
-            <div class="col-md-4 p-0">               
+            <div class="col-md-4 p-0">
 
                 <div class="container-fluid">
 
@@ -93,10 +109,10 @@
                             <div class="house-icon bg-primary pb-2">
                                 <i class="fa fa-home pt-1 pb-1 fa-5x"></i>
 
-                                 <!-- Edit User Details row -->
-                                 <div class="edit-btn">
-                                     <a href="./houses.php" class="btn">Houses</a>
-                                 </div>
+                                <!-- Edit User Details row -->
+                                <div class="edit-btn">
+                                    <a href="./houses.php" class="btn">Houses</a>
+                                </div>
                             </div>
 
                         </div>
@@ -118,28 +134,49 @@
 
                 <div class="row">
                     <div class="col-5 pt-2 pb-2">Total Houses</div>
-                    <div class="col-7 pt-2 pb-2">The Number</div>
+                    <div class="col-7 pt-2 pb-2"><?php 
+                    if(empty($data["numberHouses"])) {
+                        echo "Not Available"; 
+                    } else {
+                        echo $data["numberHouses"];
+                    }
+                     ?></div>
                 </div>
 
-                
+
                 <div class="row">
                     <div class="col-5 pt-2 pb-2">Occupied Houses</div>
-                    <div class="col-7 pt-2 pb-2">The Number</div>
+                    <div class="col-7 pt-2 pb-2"><?php
+                        if (empty($data["numberHouses"])) {
+                            echo "Not Available";
+                        } else {
+                            echo $data["occupiedHouses"];
+                        }
+                    ?></div>
                 </div>
 
                 <div class="row">
                     <div class="col-5 pt-2 pb-2">Unoccupied Houses</div>
-                    <div class="col-7 pt-2 pb-2">The Number</div>
+                    <div class="col-7 pt-2 pb-2"><?php
+
+                        if (empty($data["numberHouses"])) {
+                            echo "Not Available";
+                        } else {
+                            echo $data["emptyHouses"];
+                        }
+
+                    ?></div>
                 </div>
 
                 <div class="row">
-                    <div class="col-5 pt-2 pb-2">Owner Name</div>
-                    <div class="col-7 pt-2 pb-2">The Name</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-5 pt-2 pb-2">Payment</div>
-                    <div class="col-7 pt-2 pb-2">Kshs 122000</div>
+                    <div class="col-5 pt-2 pb-2">Overoll Rent</div>
+                    <div class="col-7 pt-2 pb-2"><?php
+                        if (empty($data["numberHouses"])) {
+                            echo "Not Available";
+                        } else {
+                            echo $data["rentalTotal"];
+                        }
+                    ?></div>
                 </div>
 
                 <div class="row">
@@ -163,4 +200,5 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/custom/apartment-profile.js"></script>
 </body>
+
 </html>

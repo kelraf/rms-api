@@ -65,54 +65,13 @@
                                     <td>'.$data["emptyHouses"].'</td>
                                     <td>'.$data["occupiedHouses"].'</td>
                                     <td class="p-0">
-                                        <a href="./apartment_profile.php" class="btn mt-1 mb-1" id="table-btn">More</a>
+                                        <a href="./apartment_profile.php?id='.$data["id"].'" class="btn mt-1 mb-1" id="table-btn">More</a>
                                     </td>
                                 </tr>
                                 ';
                             }
                         
                         ?>
-
-                        <!-- <tr id="table-row" class="table-row pt-3">
-                            <td>Rafael </td>
-                            <td>Kingara</td>
-                            <td>Male</td>
-                            <td>National Id</td>
-                            <td>073435365</td>
-                            <td class="p-0">
-                                <a href="./apartment_profile.html" class="btn mt-1 mb-1" id="table-btn">More</a>
-                            </td>
-                        </tr>
-                        <tr id="table-row" class="g-primary">
-                            <td>Rafael </td>
-                            <td>Kingara</td>
-                            <td>Male</td>
-                            <td>National Id</td>
-                            <td>073435365</td>
-                            <td class="p-0">
-                                <a href="./apartment_profile.html" class="btn mt-1 mb-1" id="table-btn">More</a>
-                            </td>
-                        </tr>
-                        <tr id="table-row" class="g-primary">
-                            <td>Rafael </td>
-                            <td>Kingara</td>
-                            <td>Male</td>
-                            <td>National Id</td>
-                            <td>073435365</td>
-                            <td class="p-0">
-                                <a href="./apartment_profile.html" class="btn mt-1 mb-1" id="table-btn">More</a>
-                            </td>
-                        </tr>
-                        <tr id="table-row" class="g-primary">
-                            <td>Rafael </td>
-                            <td>Kingara</td>
-                            <td>Male</td>
-                            <td>National Id</td>
-                            <td>073435365</td>
-                            <td class="p-0">
-                                <a href="./apartment_profile.html" class="btn mt-1 mb-1" id="table-btn">More</a>
-                            </td>
-                        </tr> -->
 
                     </tbody>
                 </table>
