@@ -22,6 +22,11 @@
         }
 
         public function myTenants() {
+
+            /**
+             * The Method id user to get tenants that belong to the        
+             */
+
             try {
                 $stmt = "SELECT * FROM users WHERE landlordId=?";
                 $sql = $this->db->prepare($stmt);

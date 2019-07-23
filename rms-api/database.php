@@ -49,12 +49,24 @@
                 email VARCHAR(100),
                 registrationData VARCHAR(15),
                 status TEXT(10),
-                exitDate VARCHAR(15),
                 passw VARCHAR(100) NOT NULL,
                 confirmPassw VARCHAR(100) NOT NULL,
                 admin BOOLEAN,
-                landlord BOOLEAN,
-                tenant BOOLEAN
+                landlord BOOLEAN
+            )";
+
+            $tenants = "CREATE TABLE IF NOT EXISTS tenants(
+                id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                firstName TEXT(20),
+                lastName TEXT(20),
+                gender TEXT(10),
+                nationalId INT(15),
+                phoneNo VARCHAR(15),
+                email VARCHAR(100),
+                registrationData VARCHAR(15),
+                status TEXT(10),
+                exitDate VARCHAR(15),
+                landlordId INT(8) NOT NULL
             )";
 
             $apartments = "CREATE TABLE IF NOT EXISTS apartments(
