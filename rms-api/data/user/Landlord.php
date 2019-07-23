@@ -4,6 +4,8 @@
 
     class LandLord extends Base {
 
+        protected $table = "users";
+
         public function __construct() {
             parent::__construct();
         }
@@ -30,7 +32,7 @@
 
                 try {
 
-                    $stmt = "INSERT INTO users(email, passw, confirmPassw) VALUES(?, ?, ?)";
+                    $stmt = "INSERT INTO $this->table(email, passw, confirmPassw) VALUES(?, ?, ?)";
                     $sql = $this->db->prepare($stmt);
     
                     if($sql->execute([$this->email, $this->passw, $this->confirmPassw])) {
@@ -59,7 +61,7 @@
             if($result["bool"]) {
 
                 try {
-                    $sql = $this->db->prepare("UPDATE users SET passw=?, confirmPassw=? WHERE id=?");
+                    $sql = $this->db->prepare("UPDATE $this->table SET passw=?, confirmPassw=? WHERE id=?");
                     if($sql->execute([$this->passw, $this->confirmPassw, $this->id])) {
                         return ["bool" => true, "Message" => "Successlly Updated Your Password"];
                     } else {
@@ -80,23 +82,23 @@
 
     $user = new LandLord;
 
-    $user->id = 80;
+    $user->id = 1;
 
     $user->currentPassw = "kelvin";
 
-    $user->firstName = "Kelvin";
+    $user->firstName = "Kelraf";
     $user->lastName = "Wambugu";
     $user->gender = "male";
     $user->nationalId = 1122678;
     $user->phoneNo = "0727456354";
-    $user->email = "kelvin@gmail.com";
+    $user->email = "kelraf@gmail.com";
     $user->passw = "kelraf";
     $user->confirmPassw = "kelraf";
 
     // print_r($user->register());
     // print_r($user->updatePasswords());
-    print_r($user->getUser());
-    // print_r($user->updateInfor());
+    // print_r($user->getUser());
+    print_r($user->updateInfor());
     // print_r($user->deleteUser());
 
 ?>

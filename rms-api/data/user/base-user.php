@@ -26,6 +26,7 @@
 
         protected $dbinst;
         protected $db;
+        protected $table = "users";
 
         public function __construct() {
             $this->dbinst = new Database;
@@ -36,13 +37,13 @@
             $this->db = $this->dbinst->closeConn();
         }
 
-        protected function idExists($data=false) {
+        public function idExists($data=false) {
             if(empty($this->id)) {
                 return ["bool" => false, "message" => "Please Provide the user Id"];
             } else {
                 try {
 
-                    $stmt = "SELECT * FROM users WHERE id=?";
+                    $stmt = "SELECT * FROM $this->table WHERE id=?";
                     $sql = $this->db->prepare($stmt);
                     $sql->execute([$this->id]);
                     $user = $sql->fetch();
@@ -73,7 +74,7 @@
                 if($checkExists) {
                     try {
 
-                        $sql = $this->db->prepare("SELECT * FROM users WHERE email=?");
+                        $sql = $this->db->prepare("SELECT * FROM $this->table WHERE email=?");
                         $sql->execute([$this->email]);
                         $user = $sql->fetch();
 
@@ -184,7 +185,7 @@
 
                 try {
 
-                    $stmt = "UPDATE users SET firstName=?, lastName=?, gender=?, nationalId=?, phoneNo=?, email=? WHERE id=?";
+                    $stmt = "UPDATE $this->table SET firstName=?, lastName=?, gender=?, nationalId=?, phoneNo=?, email=? WHERE id=?";
                     $sql = $this->db->prepare($stmt);
     
                     $data = [$this->firstName, $this->lastName, $this->gender, $this->nationalId, $this->phoneNo, $this->email, $this->id];
@@ -251,7 +252,7 @@
             if(!$idexists["bool"]) {
                 return $idexists;
             } else {
-                $stmt = "DELETE FROM users WHERE id = ?";
+                $stmt = "DELETE FROM $this->table WHERE id = ?";
                 $sql = $this->db->prepare($stmt);
                 if ($sql->execute([$this->id])) {
                     return ["bool" => true, "message" => "User Successfully Deleted"];

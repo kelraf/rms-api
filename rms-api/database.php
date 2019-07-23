@@ -91,6 +91,7 @@
             )";
 
             $this->connection->exec($users);
+            $this->connection->exec($tenants);
             $this->connection->exec($apartments);
             $this->connection->exec($houses);
 
