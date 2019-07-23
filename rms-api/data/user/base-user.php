@@ -144,8 +144,6 @@
             }
         }
 
-        protected function vUserInfor() {}
-
         /**
          * ----------------------------------------------------------------------------------------------------
          * The Methods From These Point Downwords are 
@@ -265,9 +263,10 @@
 
     // $base = new Base;
 
-    // $base->id = 4;
+    // $base->id = 1;
     // $base->email = "kelraf11746@gmail.co";
     // print_r($base->idExists(true));
+    // print_r($base->getUser());
     // print_r($base->vEmail(true));
 
 ?>
