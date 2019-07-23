@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../fontawesome-free-5.9.0-web/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/custom/house_profile.css">
 </head>
 
 <body class="bg-primary" style="background: blue;">
 
     <!-- Back Button -->
-    <a href="./houses.html" class="back-arrow-btn">
+    <a href="./houses.php" class="back-arrow-btn">
         <i class="fa fa-arrow-left fa-2x"></i>
     </a>
 
@@ -63,7 +63,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Add House</button>
+                            <a href="./house_form.php" class="btn">Add House</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Edit</button>
+                            <a href="./houses.php" class="btn">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Delete</button>
+                            <a href="./houses.php" class="btn">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
 
                                 <!-- Edit User Details row -->
                                 <div class="edit-btn">
-                                    <a href="./houses.html" class="btn">More</a>
+                                    <a href="./houses.php" class="btn">More</a>
                                 </div>
                             </div>
 
@@ -171,7 +171,7 @@
                 <div class="row pt-2 pb-2">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <a href="./apartment_profile.html" class="btn">View</a>
+                            <a href="./apartment_profile.php" class="btn">View</a>
                         </div>
                     </div>
                 </div>

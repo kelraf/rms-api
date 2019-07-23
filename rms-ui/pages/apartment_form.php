@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 bg-primary">
-                <form action="" method="post" class="register">
+                <form action="../../rms-api/api/apart-api/create.php" method="post" class="register">
 
                     <div class="reg-header">
                         <h4>Add Apartment</h4>

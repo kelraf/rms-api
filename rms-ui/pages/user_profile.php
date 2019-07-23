@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../fontawesome-free-5.9.0-web/css/fontawesome.css"> -->
+    <link rel="stylesheet" href="../fontawesome-free-5.9.0-web/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/custom/user_profile.css">
 </head>
 <body class="bg-primary">
 
     <!-- Back Button -->
-    <a href="./dashboard.html" class="back-arrow-btn">
+    <a href="./dashboard.php" class="back-arrow-btn">
         <i class="fa fa-arrow-left fa-2x"></i>
     </a>
 
@@ -27,7 +27,9 @@
                     <div class="col-md-12">
 
                         <!-- Image Container -->
-                        <div class="image-cont"></div>
+                        <div class="image-cont">
+                            <img class="img-fluid" src="../images/profile-image.jpg" alt="Profile Image" />
+                        </div>
                     </div>
                 </div>
 
@@ -41,7 +43,7 @@
                 <div class="row">
                     <div class="col-12  p-0">
                         <div class="edit-btn">
-                            <button class="btn">Edit</button>
+                            <a href="./user_update.php" class="btn">Edit Infor</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +82,7 @@
                  <div class="row">
                      <div class="col-12  p-0">
                          <div class="edit-btn">
-                             <button class="btn">Edit</button>
+                             <a href="#" class="btn">Edit Passwords</a>
                          </div>
                      </div>
                  </div>

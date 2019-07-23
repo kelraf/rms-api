@@ -35,64 +35,41 @@
                            <td>Email</td>
                            <td>Registration Date</td>
                            <td>Status</td>
-                           <td>Registration Date</td>
-                           <td>View More</td>
+                           <td>Update</td>
+                           <td>Delete</td>
                        </tr>
                    </thead>
 
                    <tbody class="bg-primary" id="table-body">
 
-                       <tr id="table-row" class="g-primary">
-                           <td>Rafael </td>
-                           <td>Kingara</td>
-                           <td>Male</td>
-                           <td>National Id</td>
-                           <td>073435365</td>
-                           <td>Email@gmail.com</td>
-                           <td>Registration Date</td>
-                           <td>Available</td>
-                           <td>Registration Date</td>
-                           <td class="p-0">
-                               <button id="table-btn">More</button>
-                            </td>
-                       </tr>
-                       <tr id="table-row" class="g-primary">
-                           <td>Rafael </td>
-                           <td>Kingara</td>
-                           <td>Male</td>
-                           <td>National Id</td>
-                           <td>073435365</td>
-                           <td>Email@gmail.com</td>
-                           <td>Registration Date</td>
-                           <td>Available</td>
-                           <td>Registration Date</td>
-                           <td>Exit Date</td>
-                       </tr>
-                       <tr id="table-row" class="g-primary">
-                           <td>Rafael </td>
-                           <td>Kingara</td>
-                           <td>Male</td>
-                           <td>National Id</td>
-                           <td>073435365</td>
-                           <td>Email@gmail.com</td>
-                           <td>Registration Date</td>
-                           <td>Available</td>
-                           <td>Registration Date</td>
-                           <td>Exit Date</td>
-                       </tr>
-                       <tr id="table-row" class="g-primary">
-                           <td>Rafael </td>
-                           <td>Kingara</td>
-                           <td>Male</td>
-                           <td>National Id</td>
-                           <td>073435365</td>
-                           <td>Email@gmail.com</td>
-                           <td>Registration Date</td>
-                           <td>Available</td>
-                           <td>Registration Date</td>
-                           <td>Exit Date</td>
-                       </tr>
-                       
+                        <?php 
+                        
+                            include "../../rms-api/database.php";
+
+                            $result = mysqli_query($conn, "SELECT * FROM users");
+                        
+                                while($row = mysqli_fetch_array($result)) {
+                                    echo '
+                                        <tr id="table-row" class="g-primary">
+                                            <td>'.$row["firstName"].'</td>
+                                            <td>'.$row["lastName"].'</td>
+                                            <td>'.$row["gender"].'</td>
+                                            <td>'.$row["nationalId"].'</td>
+                                            <td>'.$row["phoneNo"].'</td>
+                                            <td>'.$row["email"].'</td>
+                                            <td>'.$row["registrationData"].'</td>
+                                            <td>'.$row["firstName"].'</td>
+                                            <td class="p-0">
+                                            <a href="#" id="table-btn">Update</a>
+                                            </td>
+                                            <td class="p-0">
+                                            <a href="#" id="table-btn">Delete</a>
+                                            </td>
+                                        </tr>
+                                        ';
+                                }
+                        
+                        ?>                       
                    </tbody>
                </table>
             </div>
@@ -102,12 +79,9 @@
     
 
     
-    <script src="../js/custom/custom-libraries/jquery.js"></script>
+    <script src="../js/custom/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src="../js/custom/custom-libraries/datatables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script src="../js/custom/custom-libraries/popper.js"></script>
-    <script src="../js/custom/custom-libraries/chart.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/custom/users_datatable.js"></script>
 </body>

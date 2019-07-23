@@ -23,7 +23,6 @@ body {
     height: 200px;
     width: 200px;
     margin: auto;
-    /* background-color: red; */
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid white;
@@ -35,13 +34,13 @@ body {
     margin: auto
 }
 
-.edit-btn button {
+.edit-btn a {
     width: 100%;
     background: transparent;
     border: 1px solid white;
     border-radius: 0;
     color: white;
-    /* margin: auto; */
+    display: inline-block;
 }
 
 .bb {

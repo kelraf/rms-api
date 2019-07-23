@@ -46,10 +46,12 @@
                 gender TEXT(10),
                 nationalId INT(15),
                 phoneNo VARCHAR(15),
-                email VARCHAR(20),
-                registrationData VARCHAR(15) NOT NULL,
+                email VARCHAR(100),
+                registrationData VARCHAR(15),
                 status TEXT(10),
                 exitDate VARCHAR(15),
+                passw VARCHAR(100) NOT NULL,
+                confirmPassw VARCHAR(100) NOT NULL,
                 admin BOOLEAN,
                 landlord BOOLEAN,
                 tenant BOOLEAN
@@ -68,10 +70,10 @@
 
             $houses = "CREATE TABLE IF NOT EXISTS houses(
                 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                houseNumber INT(20),
+                houseType VARCHAR(30) NOT NULL,
                 apartmentId VARCHAR(20) NOT NULL,
                 landlordId INT(10) NOT NULL,
-                occupied BOOLEAN,
+                status TEXT(20) NOT NULL,
                 rent INT(20),
                 tenantId INT(10)
             )";
@@ -80,11 +82,14 @@
             $this->connection->exec($apartments);
             $this->connection->exec($houses);
 
+            echo "Successfully Created The Tables";
+
         }
     }
 
-    $db = new Database;
+    // $db = new Database;
     // $db->getConn();
     // $db->closeConn();
+    // $db->createTables();
 
 ?>

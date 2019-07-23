@@ -2,25 +2,22 @@
 
     require_once "../../database.php";
 
-    // print_r($_POST);
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $gender = $_POST["gender"];
-    $phoneNo = $_POST["phoneNo"];
     $email = $_POST["email"];
-    $nationalId = $_POST["nationalId"];
+    $passw = $_POST["password"];
+    $conf_passw = $_POST["confirm_password"];
+
+    $landlord = true;
 
     $done = mysqli_query($conn, 
-                        "INSERT INTO users (firstName, lastName, gender, phoneNo, email, nationalId)
-                            VALUES('$firstName', '$lastName', '$gender','$nationalId', $phoneNo, '$email')"
+                        "INSERT INTO users (email, confirmPassw, passw, landlord)
+                            VALUES('$email', '$passw', '$conf_passw', '$landlord')"
                         );
 
     if($done) {
-        echo "Success";
+        header("Location: ../../../rms-ui/pages/dashboard.php");
     } else {
         echo "Error";
     }
 
-    
 
 ?>

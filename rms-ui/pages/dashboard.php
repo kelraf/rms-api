@@ -26,7 +26,7 @@
 
             <!-- Image -->
             <div class="col-3 profile-image-col">
-                <a href="./user_profile.html" class="image-link">
+                <a href="./user_profile.php" class="image-link">
                     <div class="image-cont">
                         <img class="img-fluid" src="../images/profile-image.jpg" alt="Profile Image">
                     </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-2 col-6">
                                 <div class="row">
                                     <div class="col-md-6 p-0 col-6 profile-image-col">
-                                        <a href="./user_profile.html" class="image-link">
+                                        <a href="./user_profile.php" class="image-link">
                                             <div class="image-cont">
                                                 <img class="img-fluid" src="../images/profile-image.jpg" alt="Profile Image">
                                             </div>
@@ -144,7 +144,7 @@
                                     <i class="fa fa-users pr-1 fa-2x"></i>
                                 </div>
                                 <div class="col-md-10 col-10 p-0">
-                                    <span>Tenants</spa>
+                                    <span>Tenants</span>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                         <i class="fa fa-money fa-2x pr-1"> </i><span>Outstanding Payments</spa>
                     </a> -->
 
-                    <a class="nav-link p-0" id="v-pills-outs-payments-tab" href="./user_profile.html" role="tab" aria-controls="v-pills-outs-payments">
+                    <a class="nav-link p-0" id="v-pills-outs-payments-tab" href="./user_profile.php" role="tab" aria-controls="v-pills-outs-payments">
 
                         <div class="container-fluid pt-2 pb-1">
                             <div class="row">
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                     </a>
-                    <a class="nav-link p-0" id="v-pills-outs-payments-tab" href="../" role="tab" aria-controls="v-pills-outs-payments" aria-selected="false">
+                    <a class="nav-link p-0" id="v-pills-outs-payments-tab" href="../../" role="tab" aria-controls="v-pills-outs-payments" aria-selected="false">
 
                         <div class="container-fluid pt-2 pb-3">
                             <div class="row">
@@ -215,7 +215,7 @@
 
                                 <!-- Apartments -->
                                 <div class="col-md-4 content-cols p-0">
-                                    <a href="./apartments.html" class="content-hold p-1">
+                                    <a href="./apartments.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-building pt-1 pb-1 fa-4x"></i>
                                         </div>
@@ -226,7 +226,7 @@
 
                                 <!-- Houses -->
                                 <div class="col-md-4 content-cols p-0">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-4x"></i>
                                         </div>
@@ -237,7 +237,7 @@
 
                                 <!-- Occupied -->
                                 <div class="col-md-4 content-cols p-0">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-users pt-1 pb-1 fa-5x with-pple"></i>
@@ -253,7 +253,7 @@
 
                                 <!-- Not Occupied -->
                                 <div class="col-md-4 content-cols p-0">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-5x"></i>
                                             <i class="fa fa-users text-danger pt-1 pb-1 fa-4x with-pple"></i>
@@ -353,13 +353,13 @@
                                         <div class="col-6">Total Apartments</div>
                                         <div class="col-3">7</div>
                                         <div class="col-md-3 pt-1 pb-1">
-                                            <a href="./apartments.html" class="btn btn-custom">View</a>
+                                            <a href="./apartments.php" class="btn btn-custom">View</a>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3 pt-1 pb-1">
-                                    <a href="./apartment_form.html" class="btn btn-custom">Add Apartment</a>
+                                    <a href="./apartment_form.php" class="btn btn-custom">Add Apartment</a>
                                 </div>
 
                             </div>
@@ -368,7 +368,7 @@
                             <div class="row">
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./apartments.html" class="content-hold p-1">
+                                    <a href="./apartments.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-building pt-1 pb-1 fa-4x"></i>
                                             <!-- <i class="fa fa-building pt-1 pb-1 fa-5x with-pple"></i> -->
@@ -439,7 +439,7 @@
                                 </div>
 
                                 <div class="col-md-4 pb-1">
-                                    <a href="./house_form.html" class="btn btn-custom" id="to-house-form">Add House</a>
+                                    <a href="./house_form.php" class="btn btn-custom" id="to-house-form">Add House</a>
                                 </div>
 
                             </div>
@@ -448,7 +448,7 @@
                             <div class="row">
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-users pt-1 pb-1 fa-5x with-pple"></i>
@@ -459,7 +459,7 @@
                                 </div>
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-users pt-1 pb-1 fa-5x with-pple text-danger"></i>
@@ -556,13 +556,13 @@
                                         <div class="col-6">Total Tenants</div>
                                         <div class="col-3">677</div>
                                         <div class="col-3">
-                                            <a href="./users.html" class="btn btn-custom ">View</a>
+                                            <a href="./users.php" class="btn btn-custom ">View</a>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <a href="./register.html" class="btn btn-custom ">Add Tenant</a>
+                                    <a href="./register.php" class="btn btn-custom ">Add Tenant</a>
                                 </div>
 
                             </div>
@@ -571,7 +571,7 @@
                             <div class="row">
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./users.html" class="content-hold p-1">
+                                    <a href="./users.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-home pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-users pt-1 pb-1 fa-5x with-pple"></i>
@@ -593,7 +593,7 @@
                                 </div>
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-money pt-1 pb-1 fa-4x"></i>
                                             <!-- <i class="fa fa-cross pt-1 pb-1 fa-5x text-danger with-pple"></i> -->
@@ -604,7 +604,7 @@
                                 </div>
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-money pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-times pt-1 pb-1 fa-5x text-danger with-pple"></i>
@@ -685,7 +685,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <a href="./house_form.html" class="btn btn-custom ">Add Payment</a>
+                                    <a href="./house_form.php" class="btn btn-custom ">Add Payment</a>
                                 </div>
 
                             </div>
@@ -694,7 +694,7 @@
                             <div class="row">
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-money pt-1 pb-1 fa-4x"></i>
                                             <!-- <i class="fa fa-cross pt-1 pb-1 fa-5x text-danger with-pple"></i> -->
@@ -705,7 +705,7 @@
                                 </div>
 
                                 <div class="col-md-3 p-0 content-cols">
-                                    <a href="./houses.html" class="content-hold p-1">
+                                    <a href="./houses.php" class="content-hold p-1">
                                         <div class="icon">
                                             <i class="fa fa-money pt-1 pb-1 fa-4x"></i>
                                             <i class="fa fa-times pt-1 pb-1 fa-5x text-danger with-pple"></i>

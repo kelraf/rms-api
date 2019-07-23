@@ -22,48 +22,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Your First Name" name="firstName">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" placeholder="Enter Your Last Name">
-                    </div>
-
-                    <div class="form-check form-check-inline pt-2 pb-2">
-                        <input type="radio" class="form-check-input" value="male" name="gender" checked>
-                        <label for="male" class="form-check-label">Male</label>
-                    </div>
-
-                    <div class="form-check form-check-inline pt-2 pb-2">
-                        <input type="radio" class="form-check-input" value="female" name="gender">
-                        <label for="female" class="form-check-label">Female</label>
-                    </div>
-
-                    <div class="form-check form-check-inline pt-2 pb-2">
-                        <input type="radio" class="form-check-input" value="other" name="gender">
-                        <label for="other" class="form-check-label">Other</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="number" class="form-control" placeholder="Enter Your Phone Number" name="phoneNo">
-                    </div>
-
-                    <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" placeholder="Enter Your Email" name="email">
                     </div>
 
                     <div class="form-group">
-                        <label for="nationalId">National Id</label>
-                        <input type="number" class="form-control" placeholder="Enter Your National Id" name="nationalId">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter Your Password" name="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm Your Password" name="confirm_password">
                     </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-custom btn-50">Register</button>
-                        <!-- <a class="btn btn-primary btn-custom btn-50 text-white" href="./dashboard.php">Register</a> -->
                     </div>
 
                 </form>
