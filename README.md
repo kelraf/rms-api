@@ -1,4 +1,4 @@
-# Rental Management System U.I
+# Rental Management System
 
 __Rental Management System__ is a web application that helps *landlords* to manage their property, tenants and rent with easily by providing easy to use features.
 
