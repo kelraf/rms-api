@@ -20,7 +20,7 @@
             try {
                 $this->connection = new PDO("mysql:host=$this->host;dbname=$this->dbname;", $this->username);
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Successfull Database Connection \n";
+                // echo "Successfull Database Connection \n";
             } catch(PDOException $ex) {
                 echo "Error: {$ex->getMessage()}";
             }
@@ -28,13 +28,13 @@
 
         public function getConn() {
 
-            echo "Here is The Connection \n";
+            // echo "Here is The Connection \n";
             return $this->connection;
         }
 
         public function closeConn() {
             $this->connection = null;
-            echo "Database Connection Closed \n";
+            // echo "Database Connection Closed \n";
         }
 
         public function createTables() {
@@ -44,7 +44,6 @@
                 firstName TEXT(20),
                 lastName TEXT(20),
                 gender TEXT(10),
-                nationalId INT(15),
                 phoneNo VARCHAR(15),
                 email VARCHAR(100),
                 registrationData VARCHAR(15),
@@ -60,7 +59,6 @@
                 firstName TEXT(20),
                 lastName TEXT(20),
                 gender TEXT(10),
-                nationalId INT(15),
                 phoneNo VARCHAR(15),
                 email VARCHAR(100),
                 registrationData VARCHAR(15),

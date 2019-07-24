@@ -1,6 +1,6 @@
 <?php 
 
-    require_once "./base-user.php";
+    require_once "base-user.php";
 
     class Tenant extends Base {
 
@@ -34,14 +34,12 @@
                     return $this->vEmail(true);
                 } else {
                     $this->phoneNo = filter_var($this->phoneNo, FILTER_SANITIZE_STRING);
-                    $this->nationalId = filter_var($this->nationalId, FILTER_SANITIZE_STRING);
-
                     try {
 
-                        $stmt = "INSERT INTO $this->table (firstName, lastName, gender, nationalId, phoneNo, email, landlordId) VALUES(?, ?, ?, ?, ?, ?, ?)";
+                        $stmt = "INSERT INTO $this->table (firstName, lastName, gender, phoneNo, email, landlordId) VALUES(?, ?, ?, ?, ?, ?)";
                         $sql = $this->db->prepare($stmt);
         
-                        $data = [$this->firstName, $this->lastName, $this->gender, $this->nationalId, $this->phoneNo, $this->email, $this->id];
+                        $data = [$this->firstName, $this->lastName, $this->gender, $this->phoneNo, $this->email, $this->id];
         
                         if($sql->execute($data)) {
                             return ["bool" => true, "message" => "Tenant added Successfully"];
@@ -85,20 +83,20 @@
         }
     }
 
-    $tenant = new Tenant;
+    // $tenant = new Tenant;
 
     // $tenant->id = 1;
 
-    $tenant->firstName = "pambana";
-    $tenant->lastName = "nahali";
-    $tenant->gender = "female";
-    $tenant->nationalId = 11455578;
-    $tenant->phoneNo = "0756563488";
-    $tenant->email = "pambana@gmail.com";
+    // $tenant->firstName = "pambana";
+    // $tenant->lastName = "nahali";
+    // $tenant->gender = "female";
+    // $tenant->nationalId = 11455578;
+    // $tenant->phoneNo = "0756563488";
+    // $tenant->email = "pambana@gmail.com";
 
     // print_r($tenant->addTenant());
     // print_r($tenant->updateInfor());
-    print_r($tenant->myTenants());
+    // print_r($tenant->myTenants());
     // print_r($tenant->getUser());
     // print_r($tenant->deleteUser());
 
