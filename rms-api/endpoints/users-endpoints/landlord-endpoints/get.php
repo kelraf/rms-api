@@ -1,14 +1,25 @@
 <?php 
 
-    require_once "../../database.php";
+    require_once "../../../database.php";
+    require_once "../../../data/user/Landlord.php";
 
-    $result = mysqli_query($conn, "SELECT * FROM users");
-    
-    $rows = array();
+    $dbinst = new Database;
+    $conn = $dbinst->getConn();
+    $user = new LandLord($conn);
 
-        while($row = mysqli_fetch_array($result)) {
-            $rows[] = $row;
-        }
+    header("Content-Type: application/json; charset=UTF-8");
+    header("Access-Control-Allow-Methods: GET");
+    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo json_encode($rows);
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    $user->id = $_GET["id"];
+
+    $done = $user->getUser();
+    if($done["bool"]) {
+        echo json_encode($done);
+    } else {
+        echo json_encode($done);
+    }
+
 ?>
