@@ -19,10 +19,6 @@
          * ---------------------------------------------------------------------------------------------------
          */
         
-        public function __construct() {
-            parent::__construct();
-        }
-
         public function addTenant() {
 
             if(empty($this->id)) {

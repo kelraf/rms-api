@@ -1,6 +1,5 @@
 <?php 
 
-    require_once "../../database.php";
     
     class Base {
 
@@ -24,17 +23,15 @@
         public $landLord;
         public $tenant;
 
-        protected $dbinst;
         protected $db;
         protected $table = "users";
 
-        public function __construct() {
-            $this->dbinst = new Database;
-            $this->db = $this->dbinst->getConn();
+        public function __construct($conn) {
+            $this->db = $conn;
         }
 
         public function __destruct() {
-            $this->db = $this->dbinst->closeConn();
+            $this->db = null;
         }
 
         public function idExists($data=false) {

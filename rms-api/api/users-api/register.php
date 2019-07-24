@@ -1,23 +1,31 @@
 <?php 
 
     require_once "../../database.php";
+    require_once "../../data/user/Landlord.php";
 
-    $email = $_POST["email"];
-    $passw = $_POST["password"];
-    $conf_passw = $_POST["confirm_password"];
+    $dbinst = new Database;
+    $conn = $dbinst->getConn();
+    $user = new LandLord($conn);
 
-    $landlord = true;
+    $user->id = 1;
 
-    $done = mysqli_query($conn, 
-                        "INSERT INTO users (email, confirmPassw, passw, landlord)
-                            VALUES('$email', '$passw', '$conf_passw', '$landlord')"
-                        );
+    // $user->currentPassw = "kelvin";
 
-    if($done) {
-        header("Location: ../../../rms-ui/pages/dashboard.php");
-    } else {
-        echo "Error";
-    }
+    // $user->firstName = "Kelraf";
+    // $user->lastName = "Wambugu";
+    // $user->gender = "male";
+    // $user->nationalId = 1122678;
+    // $user->phoneNo = "0727456354";
+    // $user->email = "kelraf@gmail.com";
+    // $user->passw = "kelraf";
+    // $user->confirmPassw = "kelraf";
+
+    // print_r($user->register());
+    print_r($user->updatePasswords());
+    // print_r($user->getUser());
+    // print_r($user->updateInfor());
+    // print_r($user->deleteUser());
+
 
 
 ?>

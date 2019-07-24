@@ -1,14 +1,10 @@
 <?php 
 
-    require_once "./base-user.php";
+    require_once "base-user.php";
 
     class LandLord extends Base {
 
         protected $table = "users";
-
-        public function __construct() {
-            parent::__construct();
-        }
 
         public function register() {
 
@@ -80,25 +76,25 @@
 
     } 
 
-    $user = new LandLord;
+    // $user = new LandLord;
 
-    $user->id = 1;
+    // $user->id = 1;
 
-    $user->currentPassw = "kelvin";
+    // $user->currentPassw = "kelvin";
 
-    $user->firstName = "Kelraf";
-    $user->lastName = "Wambugu";
-    $user->gender = "male";
-    $user->nationalId = 1122678;
-    $user->phoneNo = "0727456354";
-    $user->email = "kelraf@gmail.com";
-    $user->passw = "kelraf";
-    $user->confirmPassw = "kelraf";
+    // $user->firstName = "Kelraf";
+    // $user->lastName = "Wambugu";
+    // $user->gender = "male";
+    // $user->nationalId = 1122678;
+    // $user->phoneNo = "0727456354";
+    // $user->email = "kelraf@gmail.com";
+    // $user->passw = "kelraf";
+    // $user->confirmPassw = "kelraf";
 
     // print_r($user->register());
     // print_r($user->updatePasswords());
     // print_r($user->getUser());
-    print_r($user->updateInfor());
+    // print_r($user->updateInfor());
     // print_r($user->deleteUser());
 
 ?>
