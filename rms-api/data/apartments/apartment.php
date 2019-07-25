@@ -55,27 +55,6 @@
             }
         }
 
-        public function idExists($data=false) {
-            if(empty($this->id)) {
-                return ["bool" => false, "message" => "Id is required"];
-            } else {
-                $stmt = "SELECT * FROM apartments WHERE id=?";
-                $sql = $this->db->prepare($stmt);
-                $sql->execute([$this->id]);
-                $apart = $sql->fetch();
-                if($apart) {
-                    if($data) {
-                        return ["bool" => true, "data" => $apart];
-                    } else {
-                        return ["bool" => true];
-                    }
-                    
-                } else {
-                    return ["bool" => false, "message" => "No Data"];
-                }
-            }
-        }
-
         public function addApart() {
             if(empty($this->landlord_id)) {
                 return ["bool" => false, "message" => "Landlord Id is required"];
@@ -104,6 +83,27 @@
             }
         }
 
+        public function myApart($data=false) {
+            if(empty($this->landlord_id)) {
+                return ["bool" => false, "message" => "Landlord Id is required"];
+            } else {
+                $stmt = "SELECT * FROM apartments WHERE landlordId=?";
+                $sql = $this->db->prepare($stmt);
+                $sql->execute([$this->landlord_id]);
+                $apart = $sql->fetchAll();
+                if($apart) {
+                    if($data) {
+                        return ["bool" => true, "data" => $apart];
+                    } else {
+                        return ["bool" => true];
+                    }
+                    
+                } else {
+                    return ["bool" => false, "message" => "No Data"];
+                }
+            }
+        }
+
         
     }
 
@@ -113,6 +113,7 @@
     $apart->landlord_id = "2";
 
     print_r($apart->addApart());
+    // print_r($apart->myApart(true));
 
     // print_r($apart->nameExists());
     // print_r($apart->idExists(true));
