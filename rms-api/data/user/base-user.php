@@ -10,7 +10,6 @@
         public $firstName;
         public $lastName;
         public $gender;
-        public $nationalId;
         public $phoneNo;
         public $email;
         public $registrationDate;
@@ -35,6 +34,7 @@
         }
 
         public function idExists($data=false) {
+
             if(empty($this->id)) {
                 return ["bool" => false, "message" => "Please Provide the user Id"];
             } else {
@@ -59,6 +59,7 @@
                     echo "Error: {$ex->getMessage()}";
                 }
             }
+            
         }
 
         protected function vEmail($checkExists=false) {
@@ -151,7 +152,7 @@
             /**
              * --------------------------------------------------------------------------------------------------------------------------------------------------
              * This method is used to edit user additional information 
-             * Parameters are user id, email, first and last Names, gender, phone Number, National Id
+             * Parameters are user id, email, first and last Names, gender, phone Number
              * This Method Depends on:
              *  -vNames() To validate names and returns assoc array with a bool as true or false depending on either validation was successfull and message
              *  -vEmail(true) To validate Email
@@ -180,10 +181,10 @@
 
                 try {
 
-                    $stmt = "UPDATE $this->table SET firstName=?, lastName=?, gender=?, nationalId=?, phoneNo=?, email=? WHERE id=?";
+                    $stmt = "UPDATE $this->table SET firstName=?, lastName=?, gender=?, phoneNo=?, email=? WHERE id=?";
                     $sql = $this->db->prepare($stmt);
     
-                    $data = [$this->firstName, $this->lastName, $this->gender, $this->nationalId, $this->phoneNo, $this->email, $this->id];
+                    $data = [$this->firstName, $this->lastName, $this->gender, $this->phoneNo, $this->email, $this->id];
     
                     if($sql->execute($data)) {
                         return ["bool" => true, "message" => "Updated Successfully"];
