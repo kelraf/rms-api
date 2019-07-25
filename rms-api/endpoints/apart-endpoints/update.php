@@ -19,5 +19,4 @@
     $done = $apartment->update();
 
     echo json_encode($done);
-
-   
+?>

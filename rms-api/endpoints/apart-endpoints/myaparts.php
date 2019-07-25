@@ -16,6 +16,4 @@
 
     echo json_encode($done);
 
-
-
 ?>

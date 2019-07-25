@@ -17,5 +17,4 @@
     $done = $apartment->deleteApart();
 
     echo json_encode($done);
-
-   
+?>
