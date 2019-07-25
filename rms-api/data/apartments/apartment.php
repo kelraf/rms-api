@@ -104,6 +104,27 @@
             }
         }
 
+        public function getOne($data=false) {
+            if(empty($this->id)) {
+                return ["bool" => false, "message" => "Id is required"];
+            } else {
+                $stmt = "SELECT * FROM apartments WHERE id=?";
+                $sql = $this->db->prepare($stmt);
+                $sql->execute([$this->id]);
+                $apart = $sql->fetch();
+                if($apart) {
+                    if($data) {
+                        return ["bool" => true, "data" => $apart];
+                    } else {
+                        return ["bool" => true];
+                    }
+                    
+                } else {
+                    return ["bool" => false, "message" => "No Data"];
+                }
+            }
+        }
+
         
     }
 
