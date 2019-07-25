@@ -152,18 +152,35 @@
         }
 
         public function deleteApart() {
-            
+            $apart = $this->getOne();
+
+            if(!$apart["bool"]) {
+                return $apart;
+            } else {
+                try {
+                    $stmt = "DELETE FROM apartments WHERE id=?";
+                    $sql = $this->db->prepare($stmt);
+                    if($sql->execute([$this->id])) {
+                        return ["bool" => true, "message" => "Successfully Deleted Apartment"];
+                    } else {
+                        throw new Exception("Error Processing Request");
+                    }
+                } catch(PDOExeption $ex) {
+                    echo "Error {$ex->getMessage()}";
+                }
+            }
         }
     }
 
     $apart = new Apartment;
-    $apart->apartment_name = "Tetemeka";
+    $apart->apartment_name = "XXXXXXX";
     $apart->apartment_location = "Mombasa";
     $apart->landlord_id = "2";
-    $apart->id = 2;
+    $apart->id = 4;
 
     // print_r($apart->addApart());
-    print_r($apart->update());
+    // print_r($apart->update());
+    print_r($apart->deleteApart());
     // print_r($apart->myApart(true));
 
     // print_r($apart->nameExists());
