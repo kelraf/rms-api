@@ -120,20 +120,50 @@
                     }
                     
                 } else {
-                    return ["bool" => false, "message" => "No Data"];
+                    return ["bool" => false, "message" => "No Data For given id apartment"];
                 }
             }
         }
 
-        
+        public function update() {
+            $id_exists = $this->getOne();
+
+            if(!$id_exists["bool"]) {
+                return $id_exists;
+            } else {
+                $success = $this->vInput();
+                if(!$success["bool"]) {
+                    return $success;
+                } else {
+                    try {
+                        $stmt = "UPDATE apartments SET apartmentName=?, apartmentLocation=? WHERE id=?";
+                        $sql = $this->db->prepare($stmt);
+                        
+                        if($sql->execute([$this->apartment_name, $this->apartment_location, $this->id])) {
+                            return ["bool" => true, "message" => "Successfully Updated Apartment"];
+                        } else {
+                            throw new Exception("Error Processing Request");
+                        }
+                    } catch(PDOExeption $ex) {
+                        echo "Error {$ex->getMessage()}";
+                    }
+                }
+            }
+        }
+
+        public function deleteApart() {
+            
+        }
     }
 
     $apart = new Apartment;
-    $apart->apartment_name = "TicTak";
-    $apart->apartment_location = "Kisumu";
+    $apart->apartment_name = "Tetemeka";
+    $apart->apartment_location = "Mombasa";
     $apart->landlord_id = "2";
+    $apart->id = 2;
 
-    print_r($apart->addApart());
+    // print_r($apart->addApart());
+    print_r($apart->update());
     // print_r($apart->myApart(true));
 
     // print_r($apart->nameExists());
