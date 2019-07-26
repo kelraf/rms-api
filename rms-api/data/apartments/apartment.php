@@ -1,6 +1,4 @@
 <?php 
-
-    require_once "../../database.php";
     
     class Apartment {
 
@@ -17,8 +15,8 @@
         private $db;
         private $dbinst;
 
-        public function __construct() {
-            $this->dbinst = new Database;
+        public function __construct($dbinst) {
+            $this->dbinst = $dbinst;
             $this->db = $this->dbinst->getConn();
         }
 
@@ -172,15 +170,15 @@
         }
     }
 
-    $apart = new Apartment;
-    $apart->apartment_name = "XXXXXXX";
-    $apart->apartment_location = "Mombasa";
-    $apart->landlord_id = "2";
-    $apart->id = 4;
+    // $apart = new Apartment;
+    // $apart->apartment_name = "XXXXXXX";
+    // $apart->apartment_location = "Mombasa";
+    // $apart->landlord_id = "2";
+    // $apart->id = 4;
 
     // print_r($apart->addApart());
     // print_r($apart->update());
-    print_r($apart->deleteApart());
+    // print_r($apart->deleteApart());
     // print_r($apart->myApart(true));
 
     // print_r($apart->nameExists());
