@@ -87,21 +87,46 @@
                 }
             }
         }
+
+        public function updateStatus() {
+            $idexist = $this->getOne();
+
+            if(!$idexist["bool"]) {
+                return $idexist;
+            } else {
+                $vtenant_id = $this->vTenantId();
+                if(!$vtenant_id["bool"]) {
+                    $this->status = "notoccupied";
+                    $this->tenant_id = "";
+                } else {
+                    $this->status = "occupied";
+                }
+
+                $stmt = "UPDATE $this->table SET status=?, tenantId=? WHERE id=?";
+                $sql = $this->db->prepare($stmt);
+                if($sql->execute([$this->status, $this->tenant_id, $this->id])) {
+                    return ["bool" => true, "message" => "Successfully Update House"];
+                } else {
+                    return ["bool" => false, "message" => "Unable To Update"];
+                }
+            }
+        }
     }
     $dbinst = new Database;
     $house = new House($dbinst);
 
     $house->house_type = "4";
-    $house->status = "notoccupied";
+    // $house->status = "notoccupied";
     $house->rent = "20000";
     $house->landlord_id = "1";
     $house->apartment_id = "1";
-    $house->tenant_id = "1";
+    $house->tenant_id = "4";
     $house->id = "1";
 
     // print_r($house->addHouse());
     // print_r($house->getAll());
     // print_r($house->getOne(true));
-    print_r($house->update());
+    // print_r($house->update());
+    print_r($house->updateStatus());
 
 ?>
