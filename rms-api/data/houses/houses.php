@@ -111,6 +111,21 @@
                 }
             }
         }
+
+        public function delHouse() {
+            $idexist = $this->getOne();
+            if(!$idexist["bool"]) {
+                return $idexist;
+            } else {
+                $stmt = "DELETE FROM $this->table WHERE id=?";
+                $sql = $this->db->prepare($stmt);
+                if($sql->execute([$this->id])) {
+                    return ["bool" => true, "message" => "Successfully Deleted One House"];
+                } else {
+                    return ["bool" => false, "message" => "Unable To Delete"];
+                }
+            }
+        }
     }
     $dbinst = new Database;
     $house = new House($dbinst);
@@ -127,6 +142,7 @@
     // print_r($house->getAll());
     // print_r($house->getOne(true));
     // print_r($house->update());
-    print_r($house->updateStatus());
+    // print_r($house->updateStatus());
+    print_r($house->delHouse());
 
 ?>
