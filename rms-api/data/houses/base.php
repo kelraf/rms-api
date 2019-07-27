@@ -48,17 +48,23 @@
 
         }
 
-        public function vData() {
+        public function vData($status=false) {
             if(empty($this->house_type)) {
                 return ["bool" => false, "message" => "House Type Field is required"];
-            } elseif (empty($this->status)) {
-                return ["bool" => false, "message" => "House Status Field is required"];
             } elseif (empty($this->rent)) {
                 return ["bool" => false, "message" => "Rent Field Required"];
             } elseif ($this->rent < 2000) {
                 return ["bool" => false, "message" => "Rent Not Acceptable"];
             } else {
-                return ["bool" => true];
+                if($status) {
+                    if (empty($this->status)) {
+                        return ["bool" => false, "message" => "House Status Field is required"];
+                    } else {
+                        return ["bool" => true];
+                    }
+                } else {
+                    return ["bool" => true];
+                }
             }
         }
 

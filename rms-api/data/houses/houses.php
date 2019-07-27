@@ -6,7 +6,7 @@
     class House extends Base {
 
         public function addHouse() {
-            $vdata = $this->vData();
+            $vdata = $this->vData(true);
             $vlandlord_id = $this->vLandlordId();
             $vapart = $this->vApartmentId();
 
@@ -66,13 +66,34 @@
                 }
             }
         }
+
+        public function update() {
+            $idexist = $this->getOne();
+
+            if(!$idexist["bool"]) {
+                return $idexist;
+            } else {
+                $vdata = $this->vData();
+                if(!$vdata["bool"]) {
+                    return $vdata;
+                } else {
+                    $stmt = "UPDATE $this->table SET houseType=?, rent=? WHERE id=?";
+                    $sql = $this->db->prepare($stmt);
+                    if($sql->execute([$this->house_type, $this->rent, $this->id])) {
+                        return ["bool" => true, "message" => "Successfully Update House"];
+                    } else {
+                        return ["bool" => false, "message" => "Unable To Update"];
+                    }
+                }
+            }
+        }
     }
     $dbinst = new Database;
     $house = new House($dbinst);
 
-    $house->house_type = "2";
+    $house->house_type = "4";
     $house->status = "notoccupied";
-    $house->rent = "15000";
+    $house->rent = "20000";
     $house->landlord_id = "1";
     $house->apartment_id = "1";
     $house->tenant_id = "1";
@@ -80,6 +101,7 @@
 
     // print_r($house->addHouse());
     // print_r($house->getAll());
-    print_r($house->getOne(true));
+    // print_r($house->getOne(true));
+    print_r($house->update());
 
 ?>
