@@ -1,4 +1,5 @@
 <?php 
+    require_once "../../database.php";
 
     class Base {
 
@@ -10,9 +11,9 @@
         public $rent;
         public $tenant_id;
 
-        private $dbinst;
-        private $db;
-        private $house_table;
+        protected $dbinst;
+        protected $db; 
+        protected $table = "houses";
 
         public function __construct($dbinst) {
             $this->dbinst = $dbinst;
@@ -23,9 +24,68 @@
             $this->dbinst->closeConn();
         }
 
+        public function vData() {
+            if(empty($this->house_type)) {
+                return ["bool" => false, "message" => "House Type Field is required"];
+            } elseif (empty($this->status)) {
+                return ["bool" => false, "message" => "House Status Field is required"];
+            } elseif (empty($this->rent)) {
+                return ["bool" => false, "message" => "Rent Field Required"];
+            } elseif ($this->rent < 2000) {
+                return ["bool" => false, "message" => "Rent Not Acceptable"];
+            } else {
+                return ["bool" => true];
+            }
+        }
+
+        public function vLandlordId($checkExist=false) {
+            if(empty($this->landlord_id)) {
+                return ["bool" => false, "message" => "Landlord Id is required"];
+            } elseif (!filter_var($this->landlord_id, FILTER_VALIDATE_INT)) {
+                return ["bool" => false, "message" => "Invalid Landlord Id"];
+            }   else {
+                if($checkExist) {
+                    return ["bool" => false, "message" => "Phase Not Implemented"];
+                } else {
+                    return ["bool" => true];
+                }
+            }
+        }
+
+        public function vApartmentId($checkExist=false) {
+            if(empty($this->apartment_id)) {
+                return ["bool" => false, "message" => "Apartment Id is required"];
+            } elseif (!filter_var($this->apartment_id, FILTER_VALIDATE_INT)) {
+                return ["bool" => false, "message" => "Invalid Apartment Id"];
+            }  else {
+                if($checkExist) {
+                    return ["bool" => false, "message" => "Phase Not Implemented"];
+                } else {
+                    return ["bool" => true];
+                }
+            }
+        }
+
+        public function vTenantId($checkExist=false) {
+            if(empty($this->tenant_id)) {
+                return ["bool" => false, "message" => "Tenant Id is required"];
+            } elseif (!filter_var($this->tenant_id, FILTER_VALIDATE_INT)) {
+                return ["bool" => false, "message" => "Invalid Tenant Id"];
+            } else {
+                if($checkExist) {
+                    return ["bool" => false, "message" => "Phase Not Implemented"];
+                } else {
+                    return ["bool" => true];
+                }
+            }
+        }
+
     }
 
     // $dbinst = new Database;
-    // $house = new House($dbinst)
+    // $house = new Base($dbinst);
+
+    // $house->tenant_id = "489";
+    // print_r($house->vTenantId());
 
 ?>
