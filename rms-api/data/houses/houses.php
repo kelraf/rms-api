@@ -49,7 +49,23 @@
             
         } 
 
-        // public function
+        public function getAll() {
+            $vlandlord_id = $this->vLandlordId();
+            if(!$vlandlord_id["bool"]) {
+                return $vlandlord_id;
+            } else {
+                $stmt = "SELECT * FROM $this->table WHERE landlordId=?";
+                $sql = $this->db->prepare($stmt);
+                $sql->execute([$this->landlord_id]);
+                $data = $sql->fetchAll();
+                
+                if($data) {
+                    return ["bool" => true, "data" => $data];
+                } else {
+                    return ["bool" => false, "message" => "You Do Not Have Houses Yet"];
+                }
+            }
+        }
     }
     $dbinst = new Database;
     $house = new House($dbinst);
@@ -60,7 +76,10 @@
     $house->landlord_id = "1";
     $house->apartment_id = "1";
     $house->tenant_id = "1";
+    $house->id = "1";
 
-    print_r($house->addHouse());
+    // print_r($house->addHouse());
+    // print_r($house->getAll());
+    print_r($house->getOne(true));
 
 ?>

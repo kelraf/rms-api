@@ -24,6 +24,30 @@
             $this->dbinst->closeConn();
         }
 
+        public function getOne($get_data = false) {
+
+            if(empty($this->id)) {
+                return ["bool" => false, "message" => "House Id is required"];
+            } else {
+                $stmt = "SELECT * FROM $this->table WHERE id=?";
+                $sql = $this->db->prepare($stmt);
+                $sql->execute([$this->id]);
+                $data = $sql->fetch();
+                
+                if($data) {
+                    if($get_data) {
+                        return ["bool" => true, "data" => $data];
+                    } else {
+                        return ["bool" => true];
+                    }
+                    
+                } else {
+                    return ["bool" => false, "message" => "You Do Not Have House with such Id"];
+                }
+            }
+
+        }
+
         public function vData() {
             if(empty($this->house_type)) {
                 return ["bool" => false, "message" => "House Type Field is required"];
