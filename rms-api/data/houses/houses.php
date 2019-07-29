@@ -127,22 +127,22 @@
             }
         }
     }
-    $dbinst = new Database;
-    $house = new House($dbinst);
+    // $dbinst = new Database;
+    // $house = new House($dbinst);
 
-    $house->house_type = "4";
+    // $house->house_type = "4";
     // $house->status = "notoccupied";
-    $house->rent = "20000";
-    $house->landlord_id = "1";
-    $house->apartment_id = "1";
-    $house->tenant_id = "4";
-    $house->id = "1";
+    // $house->rent = "20000";
+    // $house->landlord_id = "1";
+    // $house->apartment_id = "1";
+    // $house->tenant_id = "4";
+    // $house->id = "1";
 
     // print_r($house->addHouse());
     // print_r($house->getAll());
     // print_r($house->getOne(true));
     // print_r($house->update());
     // print_r($house->updateStatus());
-    print_r($house->delHouse());
+    // print_r($house->delHouse());
 
 ?>
