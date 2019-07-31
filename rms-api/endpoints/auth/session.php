@@ -8,7 +8,7 @@
 
         public function session_set($data) {
 
-            if($data["user_id"] and $data["user_role"] and $data["email"]) {
+            if($data["user_id"] or $data["user_role"] and $data["email"]) {
                 $_SESSION["user_data"] = $data;
                 return ["bool" => true];
             } else {
