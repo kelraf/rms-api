@@ -77,9 +77,9 @@
                         $user = $sql->fetch();
 
                         if ($user) {
-                            return ["bool" => false, "message" => "Email Exists"];
+                            return ["bool" => true, "data" => $user, "message" => "Email Exists"];
                         } else {
-                            return ["bool" => true, "message" => "Email Not Available"];
+                            return ["bool" => false, "message" => "Invalid Email"];
                         }
                     } catch(PDOExeption $ex) {
                         echo "Error: {$ex->getMessage()}";
