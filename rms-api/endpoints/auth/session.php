@@ -4,12 +4,13 @@
 
         public function __construct() {
             session_start();
+            $this->session = $_SESSION;
         }
 
         public function session_set($data) {
 
             if($data["user_id"] or $data["user_role"] and $data["email"]) {
-                $_SESSION["user_data"] = $data;
+                $this->session["user_data"] = $data;
                 return ["bool" => true];
             } else {
                 return ["bool" => false, "message" => "Error During Login Please Login Again"];
@@ -19,14 +20,12 @@
 
         public function auth_required() {
 
-            $session = $_SESSION;
-
-            if(empty($session)) {
+            if(empty($this->session)) {
                 return ["bool" => false, "message" => "Authentication Required Please Login"];
-            } elseif (empty($session["user_data"] or empty($session["user_data"]["user_id"]) or empty($session["user_data"]["user_role"]) or empty($session["user_data"]["email"]))) {
+            } elseif (empty($this->session["user_data"] or empty($this->session["user_data"]["user_id"]) or empty($this->session["user_data"]["user_role"]) or empty($this->session["user_data"]["email"]))) {
                 return ["bool" => false, "message" => "Session is invalid"];
             } else {
-                if($session["user_data"]["user_role"] == "landlord" or $session["user_data"]["user_role"] == "admin") {
+                if($this->session["user_data"]["user_role"] == "landlord" or $this->session["user_data"]["user_role"] == "admin") {
                     return ["bool" => true];
                 } else {
                     return ["bool" => false, "message" => "Unknown User"];
@@ -37,14 +36,12 @@
 
         public function admin_required() {
 
-            $session = $_SESSION;
-
-            if(empty($session)) {
+            if(empty($this->session)) {
                 return ["bool" => false, "message" => "Authentication Required Please Login"];
-            } elseif (empty($session["user_data"] or empty($session["user_data"]["user_id"]) or empty($session["user_data"]["user_role"]) or empty($session["user_data"]["email"]))) {
+            } elseif (empty($this->session["user_data"] or empty($this->session["user_data"]["user_id"]) or empty($this->session["user_data"]["user_role"]) or empty($this->session["user_data"]["email"]))) {
                 return ["bool" => false, "message" => "Session is invalid"];
             } else {
-                if($session["user_data"]["user_role"] == "admin") {
+                if($this->session["user_data"]["user_role"] == "admin") {
                     return ["bool" => true];
                 } else {
                     return ["bool" => false, "message" => "Admin Required"];
