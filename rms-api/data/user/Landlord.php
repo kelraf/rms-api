@@ -20,7 +20,7 @@
             $vmail = $this->vEmail(true);
             $vpassw = $this->vPassword();
 
-            if(!$vmail["bool"]) {
+            if($vmail["bool"]) {
                 return $vmail;
             } elseif(!$vpassw["bool"]) {
                 return $vpassw;

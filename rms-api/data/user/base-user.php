@@ -62,7 +62,7 @@
             
         }
 
-        protected function vEmail($checkExists=false) {
+        public function vEmail($checkExists=false) {
 
             // Sanitize email
             $this->email = filter_var($this->email, FILTER_SANITIZE_EMAIL);
@@ -72,14 +72,15 @@
                 if($checkExists) {
                     try {
 
-                        $sql = $this->db->prepare("SELECT * FROM $this->table WHERE email=?");
+                        $stmt = "SELECT * FROM $this->table WHERE email=?";
+                        $sql = $this->db->prepare($stmt);
                         $sql->execute([$this->email]);
                         $user = $sql->fetch();
 
                         if ($user) {
                             return ["bool" => true, "data" => $user, "message" => "Email Exists"];
                         } else {
-                            return ["bool" => false, "message" => "Invalid Email"];
+                            return ["bool" => false, "message" => "Email does not exist"];
                         }
                     } catch(PDOExeption $ex) {
                         echo "Error: {$ex->getMessage()}";
