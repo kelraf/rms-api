@@ -75,7 +75,7 @@
                         $stmt = "SELECT * FROM $this->table WHERE email=?";
                         $sql = $this->db->prepare($stmt);
                         $sql->execute([$this->email]);
-                        $user = $sql->fetch();
+                        $user = $sql->fetch(PDO::FETCH_ASSOC);
 
                         if ($user) {
                             return ["bool" => true, "data" => $user, "message" => "Email Exists"];
